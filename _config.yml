@@ -46,6 +46,15 @@ texture:
     linkedIn: in/hee-sung-nam-90b7768b #format: locale/username
 
   style: blue
+  analytics_id: '38551528'
+  show_excerpts: true
+
+  showNav: true
+  navigation:
+    title: "Home"
+    url: "/"
+
+
 
 
 # Exclude from processing.

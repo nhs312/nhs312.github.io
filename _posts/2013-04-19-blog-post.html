@@ -1,0 +1,14 @@
+---
+layout: post
+title: 블로그에서 한글에 콜론이 생기거나 깨질 때
+date: '2013-04-19T00:43:00.000+09:00'
+author: nhs312
+tags:
+- Blog
+modified_time: '2013-04-19T00:43:44.360+09:00'
+thumbnail: http://4.bp.blogspot.com/-egytCgRf0gw/UXASGxTB3OI/AAAAAAAAAig/IlHgKQiQdi0/s72-c/colon.png
+blogger_id: tag:blogger.com,1999:blog-3063309773808377733.post-3054088026968882934
+blogger_orig_url: https://nhs312.blogspot.com/2013/04/blog-post.html
+---
+
+크롬 브라우져로 블로그를 볼때<br />한글에 이상한 콜론처럼 이상한게 끼어들어서 한글이 깨져보일 때가 있다.<br /><br /><table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;"><tbody><tr><td style="text-align: center;"><a href="http://4.bp.blogspot.com/-egytCgRf0gw/UXASGxTB3OI/AAAAAAAAAig/IlHgKQiQdi0/s1600/colon.png" imageanchor="1" style="margin-left: auto; margin-right: auto;"><img border="0" height="640" src="http://4.bp.blogspot.com/-egytCgRf0gw/UXASGxTB3OI/AAAAAAAAAig/IlHgKQiQdi0/s640/colon.png" width="282" /></a></td></tr><tr><td class="tr-caption" style="text-align: center;">&lt;너무싫다..&gt;</td></tr></tbody></table><br />원인은 css style에 있었는데 내 블로그의 body font style에<br />text-rendering: optimizeLegibility<br />속성을 줘서 생기는 문제였다.<br /><br />해결방법은 text-rendering 속성을 제거해주거나 text-rendering: auto 을 주면 해결이 가능하다.<br /><br /><table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left: auto; margin-right: auto; text-align: center;"><tbody><tr><td style="text-align: center;"><a href="http://3.bp.blogspot.com/-iX6o5MD9UPs/UXATtpfMXjI/AAAAAAAAAio/kq7N32YV1xw/s1600/delete+colon.png" imageanchor="1" style="margin-left: auto; margin-right: auto;"><img border="0" height="640" src="http://3.bp.blogspot.com/-iX6o5MD9UPs/UXATtpfMXjI/AAAAAAAAAio/kq7N32YV1xw/s640/delete+colon.png" width="234" /></a></td></tr><tr><td class="tr-caption" style="text-align: center;">&lt;사라진 것을 볼 수 있다&gt;</td></tr></tbody></table><br />왜 이런 문제가 발생했는가 하면..<br />text-rendering 속성 중에&nbsp;optimizeLegibility는 몇몇 폰트에서 20px 이하의 사이즈일 때 가독성을 높여주려고 어떤 효과를 준다고 한다. (자세한건 검색을 mozilla 사이트에서..)<br />그게 한글 폰트에서 잘 안먹는 모양이니 auto를 주거나 제거하자.

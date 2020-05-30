@@ -1,0 +1,13 @@
+---
+layout: post
+title: 오랜만에 한 프론트단 스크립트 작업 리뷰
+date: '2015-06-15T20:24:00.004+09:00'
+author: nhs312
+tags:
+- develop
+modified_time: '2015-06-15T20:24:32.670+09:00'
+blogger_id: tag:blogger.com,1999:blog-3063309773808377733.post-2714430609729015774
+blogger_orig_url: https://nhs312.blogspot.com/2015/06/blog-post.html
+---
+
+<h2><b>Intro</b></h2>마크업으로 나온 프론트 페이지를 기획서에 명시된대로 제 기능을 할 수 있게 js, html, java 샘플 작성.<br />특히, 팀 전체가 사용할 수 있도록 공통 컴퍼넌트로 뽑아내는 구조로 작업 할 필요가 있음.<br />스케줄은 일주일로 잡고 작업.<br />인원은 3명씩 1팀, 동일한 페이지를 2팀으로 나누어 작업.<br /><br /><h2><b>main feature &amp; elements</b></h2>select box, check box, radio box, input, date picker, time picker, search condition save/reset, dynamic table add/remove 등등.. 평범한 마크업.<br /><br /><h2><b>Review</b></h2>작동은 그럭저럭 하지만 전체적으로 30%의 완성도를 보였다고 생각한다.<br />왜냐하면 아래 내용들의 부족함 때문이다.<br /><br /><b><span style="color: #3d85c6;">validate user input value</span></b><br />- max, min<br />- type<br />- enable/disable<br />- 사용자 입력 값을 채워넣는 모든 부분에서 숫자, 글자, 시간 등에 대한 type validation과 최대값, 최소값을 체크하는 limit validation이 빠져있다.<br />또한 blur에 따른 입력 가능 여부, css 체크가 제대로 안되었다.<br /><br /><b><span style="color: #3d85c6;">Date, Time picker</span></b><br />- type, man, min validation<br />- default date, time<br />- 버튼으로 날짜를 입력할 때의 값 변화<br />- 3일, 5일 등과 같이 버튼으로 date picker input에 날짜를 셋팅할때 정확한 기준을 잡지 않았다. 또한 입력할 수 있는 범위에 대한 validation 안되어있고 hadling 안되어있다.<br /><br /><b><span style="color: #3d85c6;">element event</span></b><br />- focus/unfocus<br />- enable/disable<br />- checkbox event guide<br />- input과 짝을 이루는 select box와의 동작 연계(e.g 숫자를 선택했다면 input에는 숫자에 대한 validation 체크가 필요, 사용자명을 선택했다면 그에 따른 validation, 기본 값으로 아무것도 선택하지 않는다면 input 자체를 disable 등..)를 고려하지 않았다.<br />- checkbox에서 전체를 체크했을때 나머지 모든 옵션이 체크가 되는 것, 다시 전체를 체크 해제하면 모든 옵션이 체크 해제되는것, 전체 체크된 상태에서 옵션 중 하나를 선택했을 때 전체는 체크 해제되는 것 등..<br />- 위와같은 엘리먼트간의 상호작용이 고려가 다 안되어있음.<br /><br /><b><span style="color: #3d85c6;">common component</span></b><br />- naming ruleset<br />- input/output arguments<br />- define the way to load module , bind event<br />- 구조를 파악하고 공통을 추출하기 위해서는 custom class name, custom attributes 등과 같이 어떤 ruleset이 필요한데 그걸 제대로 하지 않음.<br />- 마찬가지로 위 ruleset이 없는 과정에서 loading module, event binding등 구분을 지어서 가야하는데 안되어있음.<br /><br /><br /><br /><h2>Conclusion</h2>디테일하게는 위와 같은 기능들이 부족했고, 더 크게 보자면 사용자의 입력을 아예 제한하는 수준까지 컨트롤 할 생각을 못한 셈이 된다.<br />마치 애플이 애플만의 ecosystem을 폐쇄적이고 제한적이게끔 제공하는것처럼 그러한 치밀함, 사용성 제공에 대하여 약했다. 이건 큰 생각없이 기계처럼 작업을 했다는 소리이고 스스로 안타깝다. 이럴 때 후회랑 분노가 동시에 잘 생긴다.<br />혼자서 하는 프로젝트랑은 또 다른 환경에 맞춰 적응할 필요가있고, 여러명이서 할 때의 작업 분담, 스케줄링, 리뷰 등 여러가지 안되는게 많다.<br />또 하기싫은걸 해야하는 인내심이 여전히 더 많이 필요하다.<br /><br />오랜만에 개발 작업 한걸 리뷰한건데 뭐 늘어난게 없네 -_-;

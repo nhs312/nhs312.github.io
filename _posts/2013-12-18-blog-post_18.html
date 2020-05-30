@@ -1,0 +1,13 @@
+---
+layout: post
+title: 구글 블로그에서 블로그 내 검색이 되지 않을때
+date: '2013-12-18T23:53:00.002+09:00'
+author: nhs312
+tags:
+- Blog
+modified_time: '2013-12-18T23:53:44.711+09:00'
+blogger_id: tag:blogger.com,1999:blog-3063309773808377733.post-422624344591322554
+blogger_orig_url: https://nhs312.blogspot.com/2013/12/blog-post_18.html
+---
+
+구글 블로그에 여러 가젯을 추가할 수 있는데<br /><div>그 중 하나인 '블로그 내 검색' 이 요즘 되지 않았다.</div><div><br /></div><div>console을 보니까 event return value deprecated 인걸로 나오는데</div><div>이건 검색해보니까 지금은 warning level이라서 괜찮고 앞으로 사용하지 않게 될 것이라 한다.</div><div><br /></div><div>그러다 google groups에서 결과를 찾았다.</div><div><br /></div><div>일단 링크&nbsp;</div><div><a href="http://productforums.google.com/forum/#!topic/blogger/ZqrTNLa1No0%5B1-25-false%5D">http://productforums.google.com/forum/#!topic/blogger/ZqrTNLa1No0%5B1-25-false%5D</a></div><div><br /></div><div>결론적으로</div><div><br /><pre class="brush:javascript"><br /><form action="http://yourblogname.blogspot.com/search" method="get" name="input"><br /><input name="q" size="20" type="text" value=" " /><br /><input type="submit" value="Go!" /><br /></form><br /></pre>를 HTML/Javascript 가젯 추가로 직접 하면 다시 작동. </div>

@@ -1,0 +1,14 @@
+---
+layout: post
+title: JQuery.each function 사용
+date: '2013-05-08T10:06:00.001+09:00'
+author: nhs312
+tags:
+- JavaScript
+- JQuery
+modified_time: '2013-05-08T10:06:56.113+09:00'
+blogger_id: tag:blogger.com,1999:blog-3063309773808377733.post-3325105568212880765
+blogger_orig_url: https://nhs312.blogspot.com/2013/05/jqueryeach-function.html
+---
+
+JQuery에는 반복문과 같은 each function이 있다. Object나 array 둘다 사용 할 수 있고 javascript의 native loop들보다는 성능이 좀 떨어진다.<br /><br /><pre class="brush:javascript">jQuery.each( collection, callback(index, value) )<br /></pre><br />위 형태로 사용이 가능하고 파라미터로 collection(array 또는 object)과 callback function을 가진다. 간단한 예제를 보면 이해가 빠르다. <br /><pre class="brush:javascript">$.each([52, 97], function(index, value) {<br />  alert(index + ': ' + value);<br />});<br /></pre><br />위 코드에서 collection은 array[52, 97]이 되겠고 callback function은 내부에 바로 구현하였다. 위 array 내부의 index와 그에 해당되는 value를 사용하고 있다 <br />-&nbsp;<a href="http://api.jquery.com/jQuery.each/">http://api.jquery.com/jQuery.each/</a><br /><br /><pre class="brush:javascript">var obj = {<br />  "flammable": "inflammable",<br />  "duh": "no duh"<br />};<br />$.each( obj, function( key, value ) {<br />  alert( key + ": " + value );<br />});<br /></pre><br />위 코드를 보면 index, value 쌍을 어떻게 가져가는지 확실히 알 수 있다.<br /><br /><h3><b>sample</b></h3>list item 형태에 each를 사용하면 코드를 더 간단하게 짤 수 있다. <br /><pre class="brush:xml"><div id="photoScroll"><br /><ul class="photoZone"><br /><li class="photoBox"><br />  <img class="photoImg" datasrc="" src="" /><br />    </li><br /><li class="photoBox"><br />       <img class="photoImg" datasrc="" src="" /><br />    </li><br /><li class="photoBox"><br />       <img class="photoImg" datasrc="" src="" /><br />    </li><br />.<br />    .<br /><li class="photoBox"><br />       <img class="photoImg" datasrc="" src="" /><br />    </li><br /></ul><br /></div><br /></pre>위와 같이 여러개의 image들이 들어있는 리스트가 있다. 여러 이미지의 display 속성을 바꿔준다든가 src를 다른 주소로 바꿔준다든가 할 때 js 파일에서 핸들링 한다. 그런데 같은 class명을 가진 li와 img 태그들이기 때문에 photoZone의 배열요소로 다뤄야 한다.<br /><pre class="brush:javascript"><br />for(var i = 15, cnt = 1; i < $(".photoZone").find(".photoBox").length; i++) {<br />  if($(".photoZone").find("li").eq(i).css("display") == "none"){<br />    temp = $(".photoZone").find("li").eq(i).find("img.photoImg").attr("datasrc");<br /></pre>위와 같이 find로 찾아서 for loop를 돌려준다면 코드가 간결하지 못하게 된다. 이럴 때 each function을 사용하면 좋다.<br /><br /><pre class="brush:javascript"><br />$(".photoZone").find(".photoBox").each(function(idx) {<br />  if ($(this).css("display") == "none" && count < 16) {<br />      count ++;<br />      var eleImg = $(this).find(".photoImg");<br /><br />      if (eleImg.attr("src") != eleImg.attr("datasrc")) eleImg.attr("src", eleImg.attr("datasrc"));<br />      $(this).css("display","block");<br /></pre>이런식으로 each function을 사용한 뒤에 각 element는 $(this)로 받아서 처리하면 훨씬 편하다. 
