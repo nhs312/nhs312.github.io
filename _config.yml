@@ -49,12 +49,6 @@ texture:
   analytics_id: '38551528'
   show_excerpts: true
 
-  showNav: true
-  navigation:
-    title: "Home"
-    url: "/"
-
-
 
 
 # Exclude from processing.
