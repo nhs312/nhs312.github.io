@@ -30,9 +30,10 @@ twitter_username: nhs312
 github_username:  nhs312
 
 # Build settings
-theme: texture
+# theme: texture
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # texture settings of nhs312
 texture:
