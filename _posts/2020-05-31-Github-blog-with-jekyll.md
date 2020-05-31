@@ -1,7 +1,3 @@
-- - - -
-layout: post
-title:  “Github blog with jekyll”
-- - - -
 ## theme
 [texture](https://github.com/thelehhman/texture) 테마가 심플해서 골랐음
 
